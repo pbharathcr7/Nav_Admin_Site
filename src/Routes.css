@@ -1,0 +1,109 @@
+.tab {
+  width: 100%;
+}
+
+.bor {
+  border-radius: 12px;
+  border: 1px solid;
+  overflow: hidden;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.box-1 {
+  background-color: #cddaeb;
+}
+
+.box-2 {
+  background-color: white;
+}
+
+.routeform {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  margin-top: 5%;
+}
+
+
+.modal-overlay-route {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content-route {
+  background: white;
+  border-radius: 20px;
+  width: 70%;
+  height: 90%;
+}
+
+.modal-close {
+  float: right;
+  padding: 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  background-color: #c42b1c;
+  color: white;
+
+}
+
+
+.add-route {
+  border-radius: 12px;
+  border: 1px solid;
+  overflow-y: auto;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none;
+  width: 100%;
+  height: 240px;
+  margin-left: 15%;
+  margin-bottom: 36px;
+  
+}
+
+.add-route::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+  }
+
+.form-s {
+  max-width: 600px;
+  max-height: 500px;
+
+}
+
+.form-btn{
+  margin-left: 50%;
+}
+
+.paginationr{
+  text-align: center;
+  margin-top: 20px;
+  margin-left: auto;
+}
+
+.pgbtnr{
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.btn-primaryr {
+  background-color: #062e61;
+  color: white;
+}
+
+.btn-lightr {
+  background-color: #e0e0e0;
+  color: #000;
+}

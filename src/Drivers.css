@@ -1,0 +1,86 @@
+.tablu{
+    width: 100%;
+  }
+
+  .bord{
+    border-radius: 12px;
+    border: 1px solid;
+    overflow: hidden;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+  
+  }
+  
+  .box1{
+    background-color: #cddaeb;
+    
+  }
+  .box2{
+    background-color: white;
+  }
+  
+.driverform{
+ padding: 0%;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 50px;
+ height: 600px;
+ width: 500px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  /* padding: 20px; */
+  border-radius: 20px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.modal-close {
+  float: right;
+  padding: 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  background-color: #c42b1c;
+  color: white;
+  
+}
+
+.pagination{
+  margin-left: 50%;
+  margin-top: 15px;
+}
+
+.pgbtn {
+  background-color: #062e61; /* Dark blue background */
+  color: white;
+  padding: 5px 10px; /* Padding to make the buttons larger */
+  border: none; /* Remove default border */
+  border-radius: 10px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Larger font size */
+  margin: 0 5px; /* Spacing between buttons */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.pgbtn.btn-primary {
+  background-color: #062e61; /* Active button color */
+  color: white;
+}
+
+.pgbtn:hover {
+  background-color: #060f17; /* Slightly darker blue on hover */
+}
