@@ -182,9 +182,9 @@ const Drivers = () => {
           </table>
         </div>
       </div>
-      <div className="paginationr">
+      <div className="pagination">
         <button
-          className="pgbtnr btn-lightr"
+          className="pgbtnr btn-primary"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
@@ -194,7 +194,7 @@ const Drivers = () => {
           Page {currentPage} of {totalPages}
         </span>
         <button
-          className="pgbtnr btn-lightr"
+          className="pgbtnr btn-light"
           onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}
         >
@@ -205,7 +205,8 @@ const Drivers = () => {
         <div className="modal-overlay">
           <div className="modal-content">
             <button className="modal-close" onClick={toggleModal}>
-              X
+            <img src="images/close.png" className="closeimg" />
+
             </button>
             <div className="driverform">
               <div className="flex">

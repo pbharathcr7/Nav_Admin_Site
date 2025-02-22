@@ -68,13 +68,13 @@
 
 .modal-close {
   float: right;
-  padding: 12px;
-  border-radius: 2px;
+  border-radius: 16px;
   cursor: pointer;
-  background-color: #c42b1c;
-  color: white;
 
 }
+.closeimg{
+  height: 20px;
+ }
 
 .add-route {
   border-radius: 12px;
@@ -103,25 +103,26 @@
   margin-left: 50%;
 }
 
-.pgbtnr{
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
-  border-radius: 4px;
-  font-weight: bold;
-}
-
-.btn-primaryr {
+.btn-primary{
   background-color: #062e61;
   color: white;
+  border-radius: 14px;
+  padding: 10px;
 }
 
-.btn-lightr {
+.btn-light {
   background-color: #e0e0e0;
   color: #000;
+  border-radius: 14px;
+  padding: 10px;
+
+
 }
-.paginationr{
+.pagination{
   top:90%;
   position: absolute;
   left: 50%;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
 }

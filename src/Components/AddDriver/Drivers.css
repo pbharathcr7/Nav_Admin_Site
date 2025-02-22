@@ -66,36 +66,34 @@
 
 .modal-close {
   float: right;
-  padding: 12px;
-  border-radius: 2px;
+  border-radius: 16px;
   cursor: pointer;
-  background-color: #c42b1c;
+
+}
+.closeimg{
+  height: 20px;
+ }
+
+ .btn-primary{
+  background-color: #062e61;
   color: white;
-  
+  border-radius: 14px;
+  padding: 10px;
 }
 
+.btn-light {
+  background-color: #e0e0e0;
+  color: #000;
+  border-radius: 14px;
+  padding: 10px;
+
+
+}
 .pagination{
-  margin-left: 50%;
-  margin-top: 15px;
-}
-
-.pgbtn {
-  background-color: #062e61; /* Dark blue background */
-  color: white;
-  padding: 5px 10px; /* Padding to make the buttons larger */
-  border: none; /* Remove default border */
-  border-radius: 10px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  font-size: 1rem; /* Larger font size */
-  margin: 0 5px; /* Spacing between buttons */
-  transition: background-color 0.3s ease; /* Smooth background color transition */
-}
-
-.pgbtn.btn-primary {
-  background-color: #062e61; /* Active button color */
-  color: white;
-}
-
-.pgbtn:hover {
-  background-color: #060f17; /* Slightly darker blue on hover */
+  top:90%;
+  position: absolute;
+  left: 50%;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
 }

@@ -263,9 +263,9 @@ const AddRoutes = () => {
         </table>
       </div>
 
-      <div className="paginationr">
+      <div className="pagination">
         <button
-          className="pgbtnr btn-lightr"
+          className="pgbtnr btn-primary"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
@@ -275,7 +275,7 @@ const AddRoutes = () => {
           Page {currentPage} of {totalPages}
         </span>
         <button
-          className="pgbtnr btn-lightr"
+          className="pgbtnr btn-light"
           onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}
         >
@@ -287,7 +287,8 @@ const AddRoutes = () => {
         <div className="modal-overlay-route">
           <div className="modal-content-route">
             <button className="modal-close" onClick={toggleModal}>
-              X
+            <img src="images/close.png" className="closeimg" />
+
             </button>
 
             <div className="flex">

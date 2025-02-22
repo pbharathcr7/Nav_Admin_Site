@@ -151,9 +151,9 @@ const AddBus = () => {
           </table>
         </div>
 
-        <div className="paginationr">
+        <div className="pagination">
           <button
-            className="pgbtnr btn-lightr"
+            className="pgbtnr btn-primary"
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
           >
@@ -163,7 +163,7 @@ const AddBus = () => {
             Page {currentPage} of {totalPages}
           </span>
           <button
-            className="pgbtnr btn-lightr"
+            className="pgbtnr btn-light"
             onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
           >
@@ -176,7 +176,7 @@ const AddBus = () => {
         <div className="modal-overlay">
           <div className="modal-content">
             <button className="modal-close" onClick={() => setIsModalOpen(false)}>
-              X
+              <img src="images/close.png" className="closeimg" />
             </button>
             <div className="busform">
               <div className="flex">

@@ -65,9 +65,34 @@
    
    .modal-close {
      float: right;
-     padding: 12px;
-     border-radius: 2px;
+     padding: 10px;
+     border-radius: 16px;
      cursor: pointer;
-     background-color: #c42b1c;
-     color: white;
+     
    }
+   .closeimg{
+    height: 20px;
+   }
+   .btn-primary{
+    background-color: #062e61;
+    color: white;
+    border-radius: 14px;
+    padding: 10px;
+  }
+  
+  .btn-light {
+    background-color: #e0e0e0;
+    color: #000;
+    border-radius: 14px;
+    padding: 10px;
+  
+  
+  }
+  .pagination{
+    top:90%;
+    position: absolute;
+    left: 50%;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
