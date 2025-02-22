@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useEffect, useCallback } from "react";
-import MapContainer from "./MapContainer";
+import MapContainer from "../Map/MapContainer";
 import "./Routes.css";
-import "./Map.css";
-import mainurl from "./constants";
+import "../Map/Map.css";
+import mainurl from "../../constants";
 
 const AddRoutes = () => {
   const [lat, setLat] = useState(12.872597);
@@ -43,35 +43,35 @@ const AddRoutes = () => {
     fetchData();
   }, []);
 
-  
+
   const toggleModal = (route = null) => {
     const subroutes = route?.subroutes || [];
-  
+
     setEditingRoute(route);
     setRoute_title(route ? route.route_title || "" : "");
     setRoutes(
       subroutes.length > 0
         ? subroutes.map((subroute, i) => ({
+          route_name: subroute.route_name || "",
+          lat: subroute.location?.lat || "",
+          lang: subroute.location?.lang || "",
+          isValid: validateRow({
             route_name: subroute.route_name || "",
             lat: subroute.location?.lat || "",
-            lang: subroute.location?.lang || "",
-            isValid: validateRow({
-              route_name: subroute.route_name || "",
-              lat: subroute.location?.lat || "",
-              lang: subroute.location?.lang || ""
-            }),
-            order: i + 1,
-          }))
+            lang: subroute.location?.lang || ""
+          }),
+          order: i + 1,
+        }))
         : Array.from({ length: 5 }, () => ({
-            route_name: "",
-            lat: "",
-            lang: "",
-            isValid: false,
-          }))
+          route_name: "",
+          lat: "",
+          lang: "",
+          isValid: false,
+        }))
     );
     setIsModalOpen(!isModalOpen);
   };
-  
+
 
   const validateRow = (route) => {
     return (
@@ -86,11 +86,11 @@ const AddRoutes = () => {
       const updatedRoutes = prevRoutes.map((route, i) =>
         i === index
           ? {
-              ...route,
-              [field]: value,
-              order: i + 1,
-              isValid: validateRow({ ...route, [field]: value }),
-            }
+            ...route,
+            [field]: value,
+            order: i + 1,
+            isValid: validateRow({ ...route, [field]: value }),
+          }
           : route
       );
 
@@ -198,9 +198,9 @@ const AddRoutes = () => {
   const filteredRouteData = routeData.filter((route) => {
     const routeTitle = route.route_title ? route.route_title.toString().toLowerCase() : "";
     const subrouteNames = route.subroutes.map(subroute => subroute.route_name.toString().toLowerCase()).join(" ");
-    
+
     return routeTitle.includes(searchQuery.toLowerCase()) ||
-           subrouteNames.includes(searchQuery.toLowerCase());
+      subrouteNames.includes(searchQuery.toLowerCase());
   });
 
   // Pagination logic
@@ -225,20 +225,17 @@ const AddRoutes = () => {
         </div>
       </div>
       <div className="flex justify-end mr-52">
-        <button className="btn btn-primary bg-[#062e61] text-white font-bold py-2 px-4 mb-6 mx-2 rounded-lg">
-          Upload CSV Routes
-        </button>
         <button
-          className="btn btn-primary bg-[#062e61] text-white font-bold py-2 px-4 mb-6 rounded-lg"
+          className="routebtn btn-primary bg-[#062e61] text-white font-bold py-2 px-4 mb-6 rounded-lg"
           onClick={() => toggleModal()}
         >
           Add Route
         </button>
       </div>
-      <div className="bor rounded-xl">
-        <table className="tab">
-          <thead className="bg-[#062e61] text-white">
-            <tr>
+      <div className="table-container rounded-xl">
+        <table className="routetable w-full min-w-[500px]">
+          <thead className="tablehead bg-[#062e61] text-white">
+            <tr className="routetablerow">
               <th className="text-center py-3 px-10 uppercase font-semibold text-sm">ID</th>
               <th className="text-center py-3 px-10 uppercase font-semibold text-sm">Routes</th>
               <th className="text-center py-3 px-12 uppercase font-semibold text-sm">In-Between Routes</th>
@@ -265,25 +262,27 @@ const AddRoutes = () => {
           </tbody>
         </table>
       </div>
+
       <div className="paginationr">
-          <button
-            className="pgbtnr btn-lightr"
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
-          <span className="mx-2">
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            className="pgbtnr btn-lightr"
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
-        </div>
+        <button
+          className="pgbtnr btn-lightr"
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span className="mx-2">
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          className="pgbtnr btn-lightr"
+          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </div>
+
       {isModalOpen && (
         <div className="modal-overlay-route">
           <div className="modal-content-route">

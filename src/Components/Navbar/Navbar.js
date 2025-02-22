@@ -17,7 +17,7 @@ const Navbar = () => {
     <div className="flex navbar">
       <div
         className={`nav ${open ? "w-72" : "w-20"
-          } bg-slate-700 p-5 rounded-3xl pt-8 mt-3 mb-3 relative duration-300`}>
+          } p-5 rounded-3xl pt-8 mt-3 mb-3 relative duration-300`}>
         <img
           src="./images/control.png" alt="control"
           className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
@@ -57,9 +57,7 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
-      {/* <div className="h-screen flex-1 p-7">
-        <h1 className="text-2xl font-semibold ">home</h1>
-      </div> */}
+
     </div>
   );
 };

@@ -1,23 +1,38 @@
-.tablu{
-    width: 100%;
-  }
+.drivertable{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
 
-  .bord{
-    border-radius: 12px;
-    border: 1px solid;
-    overflow: hidden;
-    width: 85%;
-    margin-left: auto;
-    margin-right: auto;
-  
-  }
-  
-  .box1{
+.drivertable th {
+  background-color: #062e61;
+  color: white;
+}
+
+.drivertable th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.drivertable th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.drivertable tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+
+.drivertable tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+.boxs1{
     background-color: #cddaeb;
     
   }
-  .box2{
-    background-color: white;
+  .boxs2{
+    background-color: #F8F9FA;
   }
   
 .driverform{

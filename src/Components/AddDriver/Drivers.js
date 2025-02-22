@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./Drivers.css";
-import mainurl from "./constants";
+import mainurl from "../../constants";
 
 const Drivers = () => {
   const [firstname, setFirstname] = useState("");
@@ -97,9 +97,6 @@ const Drivers = () => {
     }
   };
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
 
   const filteredDrivers = driverData.filter((driver) => 
     driver.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -109,8 +106,8 @@ const Drivers = () => {
 
   const totalPages = Math.ceil(filteredDrivers.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentDrivers = filteredDrivers.slice(startIndex, endIndex);
+  // const endIndex = startIndex + itemsPerPage;
+  const currentDrivers = filteredDrivers.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <>
@@ -119,7 +116,7 @@ const Drivers = () => {
           <div className="relative">
             <input
               type="text"
-              placeholder="Search Bus"
+              placeholder="Search Driver"
               className="carter-one-regular placeholder-black font-bold font- text-black bg-[#cddaeb] h-12 w-96 px-5 rounded-2xl text-xl focus:outline-none"
               value={searchQuery} // Bind search query to input
               onChange={(e) => setSearchQuery(e.target.value)} // Update search query on input change
@@ -141,10 +138,10 @@ const Drivers = () => {
             Add Driver
           </button>
         </div>
-        <div className="bord">
-          <table className="tablu">
-            <thead className="bg-[#062e61] text-white">
-              <tr>
+        <div className="table-container rounded-xl">
+          <table className="drivertable w-full min-w-[500px]">
+            <thead className=" tableheadbg-[#062e61] text-white">
+              <tr className="drivertablerow">
                 <th className="text-center py-3 px-10 uppercase font-semibold text-sm">
                   ID
                 </th>
@@ -157,42 +154,52 @@ const Drivers = () => {
                 <th className="text-center py-3 px-24 uppercase font-semibold text-sm">
                   Email_ID
                 </th>
-                <th className="text-center py-3 px-24 uppercase font-semibold text-sm">
-                  Actions
-                </th>
-              </tr>
+                <th className="text-center py-3 px-10 uppercase font-semibold text-sm">Edit</th>
+              <th className="text-center py-3 px-10 uppercase font-semibold text-sm">Delete</th>
+            </tr>
             </thead>
             <tbody>
               {currentDrivers.map((driver, index) => (
-                <tr key={driver.id} className={index % 2 === 0 ? "box1" : "box2"}>
+                <tr key={driver.id} className={index % 2 === 0 ? "boxs1" : "boxs2"}>
                   <td className="py-3 text-center">{driver.id}</td>
                   <td className="py-3 text-center border-l-2">{driver.name}</td>
                   <td className="py-3 text-center border-l-2">{driver.phone_number}</td>
                   <td className="py-3 text-center border-l-2">{driver.email}</td>
                   <td className="py-3 text-center border-l-2">
-                    <button onClick={() => handleEdit(driver)} className="btn btn-sm btn-primary">
+                    <button onClick={() => handleEdit(driver)} className="btn btn-primary bg-blue-500 text-white px-4 py-2 rounded-lg">
                       Edit
                     </button>
-                    <button onClick={() => handleDelete(driver.id)} className="btn btn-sm btn-danger ml-2">
+                  </td>
+                  <td className="py-3 text-center border-l-2">
+                  <button onClick={() => handleDelete(driver.id)} className="btn btn-danger bg-red-500 text-white px-4 py-2 rounded-lg">
                       Delete
                     </button>
                   </td>
+                  
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <div className="pagination">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index + 1}
-              onClick={() => handlePageChange(index + 1)}
-              className={`pgbtn ${currentPage === index + 1 ? "btn-primary" : "btn-light"} mx-1`}
-            >
-              {index + 1}
-            </button>
-          ))}
-        </div>
+      </div>
+      <div className="paginationr">
+        <button
+          className="pgbtnr btn-lightr"
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span className="mx-2">
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          className="pgbtnr btn-lightr"
+          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
       </div>
       {isModalOpen && (
         <div className="modal-overlay">

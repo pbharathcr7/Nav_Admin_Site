@@ -1,32 +1,28 @@
-import './App.css';
+import './App.css'; 
 import React from "react";
 import { Routes, Route } from 'react-router-dom';
-import Home from './Home';
-import Drivers from './Drivers';
-import AddRoutes from './AddRoutes';
-import AddBus from './AddBus';
-import Navbar from './Navbar';
+import Home from './Components/Home/Home.js';
+import AddBus from './Components/AddBus/AddBus.js';
+import Navbar from './Components/Navbar/Navbar.js';
 import { BrowserRouter } from 'react-router-dom';
-import Login from './login'; // Add a login component
-import { AuthProvider } from './AuthContext';
-import PrivateRoute from './PrivateRoute';
+import Drivers from './Components/AddDriver/Drivers.js';
+import AddRoutes from './Components/AddRoutes/AddRoutes.js';
 
 function App() {
   return (
-    <AuthProvider>
       <BrowserRouter>
-        <div className="flex"> 
+        <div className="flex h-screen">
           <Navbar /> 
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={<PrivateRoute><Home/></PrivateRoute>}/> 
-            <Route path="/drivers" element={<PrivateRoute><Drivers/></PrivateRoute>}/>
-            <Route path="/buses" element={<PrivateRoute><AddBus/></PrivateRoute>}/>
-            <Route path="/add-routes" element={<PrivateRoute><AddRoutes/></PrivateRoute>}/>
-          </Routes>
+          <div className="flex-1 p-5 overflow-auto">
+            <Routes>
+              <Route path="/" element={<Home/>}/> 
+              <Route path="/drivers" element={<Drivers/>}/>
+              <Route path="/buses" element={<AddBus/>}/>
+              <Route path="/add-routes" element={<AddRoutes/>}/>
+            </Routes>
+          </div>
         </div>
       </BrowserRouter>
-    </AuthProvider>
   );
 }
 

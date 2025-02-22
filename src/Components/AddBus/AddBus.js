@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./Bus.css";
-import mainurl from "./constants";
+import mainurl from "../../constants";
 
 const AddBus = () => {
   const [busno, setBusno] = useState("");
@@ -41,7 +41,7 @@ const AddBus = () => {
     event.preventDefault();
     const url = editingBus ? `${mainurl}/api/createbus/${editingBus.bus_id}/` : `${mainurl}/api/createbus/`;
     const method = editingBus ? "PUT" : "POST";
-    
+
     try {
       await axios({
         method: method,
@@ -79,10 +79,10 @@ const AddBus = () => {
     const busNo = bus.bus_no ? bus.bus_no.toString().toLowerCase() : "";
     const driverName = bus.driver_name ? bus.driver_name.toString().toLowerCase() : "";
     const routeTitle = bus.route_title ? bus.route_title.toString().toLowerCase() : "";
-    
+
     return busNo.includes(searchQuery.toLowerCase()) ||
-           driverName.includes(searchQuery.toLowerCase()) ||
-           routeTitle.includes(searchQuery.toLowerCase());
+      driverName.includes(searchQuery.toLowerCase()) ||
+      routeTitle.includes(searchQuery.toLowerCase());
   });
 
   // Pagination logic
@@ -110,16 +110,16 @@ const AddBus = () => {
 
         <div className="flex justify-end mr-52">
           <button
-            className="btn btn-primary bg-[#062e61] text-white font-bold py-2 px-4 mb-2 rounded-lg"
+            className="btn btn-primary bg-[#062e61] text-white font-bold py-2 px-8 mb-2 rounded-lg"
             onClick={() => toggleModal()}
           >
             Add Bus
           </button>
         </div>
-        <div className="bors rounded-xl">
-          <table className="tabl">
-            <thead className="bg-[#062e61] text-white">
-              <tr>
+        <div className="table-container rounded-xl">
+          <table className="bustable w-full min-w-[500px]">
+            <thead className="tablehead bg-[#062e61] text-white">
+              <tr className="bustablerow">
                 <th className="text-center py-3 px-10 uppercase font-semibold text-sm">ID</th>
                 <th className="text-center py-3 px-10 uppercase font-semibold text-sm">Bus No</th>
                 <th className="text-center py-3 px-12 uppercase font-semibold text-sm">Driver</th>
@@ -130,21 +130,18 @@ const AddBus = () => {
             </thead>
             <tbody>
               {currentBuses.map((bus, index) => (
-                <tr
-                  key={bus.id}
-                  className={index % 2 === 0 ? "boxs1" : "boxs2"}
-                >
+                <tr key={bus.id} className={index % 2 === 0 ? "boxs1" : "boxs2"}>
                   <td className="py-3 text-center">{bus.bus_id}</td>
                   <td className="py-3 text-center border-l-2">{bus.bus_no}</td>
                   <td className="py-3 text-center border-l-2">{bus.driver_name}</td>
                   <td className="py-3 text-center border-l-2">{bus.route_title}</td>
                   <td className="py-3 text-center border-l-2">
-                    <button onClick={() => toggleModal(bus)} className="btn btn-secondary">
+                    <button onClick={() => toggleModal(bus)} className="btn btn-secondary bg-blue-500 text-white px-4 py-2 rounded-lg">
                       Edit
                     </button>
                   </td>
                   <td className="py-3 text-center border-l-2">
-                    <button onClick={() => handleDelete(bus.bus_id)} className="btn btn-danger">
+                    <button onClick={() => handleDelete(bus.bus_id)} className="btn btn-danger bg-red-500 text-white px-4 py-2 rounded-lg">
                       Delete
                     </button>
                   </td>
@@ -154,16 +151,24 @@ const AddBus = () => {
           </table>
         </div>
 
-        <div className="pagination mt-4">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index + 1}
-              onClick={() => setCurrentPage(index + 1)}
-              className={`pgbtn ${currentPage === index + 1 ? "btn-primary" : "btn-light"} mx-1`}
-            >
-              {index + 1}
-            </button>
-          ))}
+        <div className="paginationr">
+          <button
+            className="pgbtnr btn-lightr"
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span className="mx-2">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            className="pgbtnr btn-lightr"
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
         </div>
       </div>
 
